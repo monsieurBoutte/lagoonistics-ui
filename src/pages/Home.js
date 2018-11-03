@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchSaintJohnSensors } from '../services/saintJohn-service';
 import axios from 'axios';
+import LagoonMap from '../components/LagoonMap';
 
 export const Home = () => {
   const [saintJohnSensorInfo, setSaintJohnSensorInfo] = useState([]);
@@ -10,6 +11,9 @@ export const Home = () => {
   }, [])
 
   return (
-    <div>home screen</div>
+    <div>
+      home screen
+      <LagoonMap />
+    </div>
   );
 }

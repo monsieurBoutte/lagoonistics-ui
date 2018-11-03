@@ -1,0 +1,1006 @@
+[
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.95
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 52.17
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 19
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 11.87
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 50.13
+      },
+      {
+        "label": "Conductivity",
+        "valu": 35.78
+      },
+      {
+        "label": "Depth",
+        "valu": 0.61
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 9.015
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 125.64
+      },
+      {
+        "label": "FDOM",
+        "valu": 75.3
+      },
+      {
+        "label": "ORP",
+        "valu": 146.64
+      },
+      {
+        "label": "pH Level",
+        "valu": 8.4
+      },
+      {
+        "label": "Salinity",
+        "valu": 22.12
+      },
+      {
+        "label": "Turbidity",
+        "valu": 16.67
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 25.9
+      },
+      {
+        "label": "Nitrogen",
+        "valu": -0.0063
+      },
+      {
+        "label": "Phosphate(PO4)",
+        "valu": null
+      }
+    ],
+    "name": "KFL0055",
+    "alt_name": "Turnbull Creek #2",
+    "lat": 28.797615,
+    "lon": -80.850388
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.85
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 14.76
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 5.22
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 3.18
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 12.72
+      },
+      {
+        "label": "Conductivity",
+        "valu": 37.18
+      },
+      {
+        "label": "Depth",
+        "valu": 1.19
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 7.59
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 104.5
+      },
+      {
+        "label": "FDOM",
+        "valu": 33.3
+      },
+      {
+        "label": "ORP",
+        "valu": 138.68
+      },
+      {
+        "label": "pH Level",
+        "valu": 8.1
+      },
+      {
+        "label": "Salinity",
+        "valu": 23.71
+      },
+      {
+        "label": "Turbidity",
+        "valu": 13.73
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 24.7
+      },
+      {
+        "label": "Nitrogen",
+        "valu": null
+      },
+      {
+        "label": "Phosphate(PO4)",
+        "valu": null
+      }
+    ],
+    "name": "KFL0060",
+    "alt_name": "Haulover Canal",
+    "lat": 28.728131090163906,
+    "lon": -80.76086967213107
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.54
+      },
+      {
+        "label": "Flow Direction",
+        "valu": null
+      },
+      {
+        "label": "Flow Speed",
+        "valu": 0.6
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 234.28
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 82.69
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 43.75
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 175.18
+      },
+      {
+        "label": "Conductivity",
+        "valu": 30.58
+      },
+      {
+        "label": "Depth",
+        "valu": 0.69
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 5.67
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 74.22
+      },
+      {
+        "label": "FDOM",
+        "valu": 65.5
+      },
+      {
+        "label": "ORP",
+        "valu": 155.58
+      },
+      {
+        "label": "pH Level",
+        "valu": 8.2
+      },
+      {
+        "label": "Salinity",
+        "valu": 19.79
+      },
+      {
+        "label": "Turbidity",
+        "valu": 9.87
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 23.1
+      },
+      {
+        "label": "Nitrogen",
+        "valu": -0.0061
+      },
+      {
+        "label": "Phosphate(PO4)",
+        "valu": null
+      }
+    ],
+    "name": "KFL0053",
+    "alt_name": "Barge Canal",
+    "lat": 28.406448,
+    "lon": -80.719131
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.79
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 37.17
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 12.97
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 5.71
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 23.26
+      },
+      {
+        "label": "Conductivity",
+        "valu": 17.09
+      },
+      {
+        "label": "Depth",
+        "valu": 0.71
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 3.821
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 48.3
+      },
+      {
+        "label": "FDOM",
+        "valu": 66.9
+      },
+      {
+        "label": "ORP",
+        "valu": 212.99
+      },
+      {
+        "label": "pH Level",
+        "valu": 8.9
+      },
+      {
+        "label": "Salinity",
+        "valu": 10.22
+      },
+      {
+        "label": "Turbidity",
+        "valu": 20.3
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 24.2
+      },
+      {
+        "label": "Nitrogen",
+        "valu": null
+      },
+      {
+        "label": "Phosphate(PO4)",
+        "valu": null
+      }
+    ],
+    "name": "KFL0049",
+    "alt_name": "Sykes Creek",
+    "lat": 28.319928076923077,
+    "lon": -80.66544492307692
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.84
+      },
+      {
+        "label": "Flow Direction",
+        "valu": null
+      },
+      {
+        "label": "Flow Speed",
+        "valu": 0.8
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 18.79
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 6.77
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 3.39
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 13.67
+      },
+      {
+        "label": "Conductivity",
+        "valu": 21.61
+      },
+      {
+        "label": "Depth",
+        "valu": 0.89
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 5.847
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 75.15
+      },
+      {
+        "label": "FDOM",
+        "valu": 57.7
+      },
+      {
+        "label": "ORP",
+        "valu": 143.88
+      },
+      {
+        "label": "pH Level",
+        "valu": 7.8
+      },
+      {
+        "label": "Salinity",
+        "valu": 13.2
+      },
+      {
+        "label": "Turbidity",
+        "valu": 6.83
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 24.2
+      }
+    ],
+    "name": "KFL0059",
+    "alt_name": "Dragon Point",
+    "lat": 28.140006,
+    "lon": -80.60340325
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.36
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 7.95
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 2.81
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 0.65
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 2.65
+      },
+      {
+        "label": "Conductivity",
+        "valu": 49.81
+      },
+      {
+        "label": "Depth",
+        "valu": 0.65
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 5.141
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 75.14
+      },
+      {
+        "label": "FDOM",
+        "valu": 8.3
+      },
+      {
+        "label": "ORP",
+        "valu": 139.26
+      },
+      {
+        "label": "pH Level",
+        "valu": 8.2
+      },
+      {
+        "label": "Salinity",
+        "valu": 32.41
+      },
+      {
+        "label": "Turbidity",
+        "valu": 4.87
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 25.3
+      },
+      {
+        "label": "Phosphate(PO4)",
+        "valu": 0.0458
+      }
+    ],
+    "name": "KFL0033",
+    "alt_name": "Taylor Creek",
+    "lat": 27.46737064285714,
+    "lon": -80.32518257142856
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.32
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 11.89
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 3.77
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 1.34
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 5.37
+      },
+      {
+        "label": "Conductivity",
+        "valu": 50.92
+      },
+      {
+        "label": "Depth",
+        "valu": 0.67
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 4.956
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 72.75
+      },
+      {
+        "label": "FDOM",
+        "valu": 3.7
+      },
+      {
+        "label": "ORP",
+        "valu": -61.66
+      },
+      {
+        "label": "pH Level",
+        "valu": 7.8
+      },
+      {
+        "label": "Salinity",
+        "valu": 33.24
+      },
+      {
+        "label": "Turbidity",
+        "valu": 17.69
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 25.2
+      }
+    ],
+    "name": "KFL0062",
+    "alt_name": "Moore's Creek #2",
+    "lat": 27.451453894252882,
+    "lon": -80.3234681080462
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.39
+      },
+      {
+        "label": "Flow Direction",
+        "valu": null
+      },
+      {
+        "label": "Flow Speed",
+        "valu": 0.2
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 18.24
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 6.45
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 2.8
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 11.16
+      },
+      {
+        "label": "Conductivity",
+        "valu": 1.77
+      },
+      {
+        "label": "Depth",
+        "valu": 0.32
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 5.866
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 69.67
+      },
+      {
+        "label": "FDOM",
+        "valu": 182.5
+      },
+      {
+        "label": "ORP",
+        "valu": 140.27
+      },
+      {
+        "label": "pH Level",
+        "valu": 7.6
+      },
+      {
+        "label": "Salinity",
+        "valu": 0.92
+      },
+      {
+        "label": "Turbidity",
+        "valu": 8.4
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 23.7
+      },
+      {
+        "label": "Nitrogen",
+        "valu": 0.0951
+      },
+      {
+        "label": "Phosphate(PO4)",
+        "valu": 0.0801
+      }
+    ],
+    "name": "KFL0057",
+    "alt_name": "10 Mile Creek",
+    "lat": 27.403372557739495,
+    "lon": -80.36513640049148
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 11.73
+      },
+      {
+        "label": "Flow Direction",
+        "valu": null
+      },
+      {
+        "label": "Flow Speed",
+        "valu": 1.5
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 36.85
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 11.76
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 6.55
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 27.6
+      },
+      {
+        "label": "Conductivity",
+        "valu": 5.62
+      },
+      {
+        "label": "Depth",
+        "valu": 1.21
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 5.77
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 70.8
+      },
+      {
+        "label": "FDOM",
+        "valu": 173.6
+      },
+      {
+        "label": "ORP",
+        "valu": 93.98
+      },
+      {
+        "label": "pH Level",
+        "valu": 7.8
+      },
+      {
+        "label": "Salinity",
+        "valu": 3.05
+      },
+      {
+        "label": "Turbidity",
+        "valu": 6.95
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 24.8
+      }
+    ],
+    "name": "KFL0037",
+    "alt_name": "North Fork",
+    "lat": 27.283642,
+    "lon": -80.318527
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.17
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 9.73
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 3.17
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 1.36
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 5.33
+      },
+      {
+        "label": "Conductivity",
+        "valu": 20.47
+      },
+      {
+        "label": "Depth",
+        "valu": 0.91
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 5.321
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 69.65
+      },
+      {
+        "label": "FDOM",
+        "valu": 80.8
+      },
+      {
+        "label": "ORP",
+        "valu": 138.75
+      },
+      {
+        "label": "pH Level",
+        "valu": 7.8
+      },
+      {
+        "label": "Salinity",
+        "valu": 12.07
+      },
+      {
+        "label": "Turbidity",
+        "valu": 2.96
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 25.6
+      },
+      {
+        "label": "Nitrogen",
+        "valu": 0.087
+      },
+      {
+        "label": "Phosphate(PO4)",
+        "valu": 0.0911
+      }
+    ],
+    "name": "KFL0043",
+    "alt_name": "C23",
+    "lat": 27.202541,
+    "lon": -80.286011
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.37
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 39.8
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 14.23
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 6.05
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 24.29
+      },
+      {
+        "label": "Conductivity",
+        "valu": 22.96
+      },
+      {
+        "label": "Depth",
+        "valu": 0.8
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 6.147
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 80.59
+      },
+      {
+        "label": "FDOM",
+        "valu": 114.6
+      },
+      {
+        "label": "ORP",
+        "valu": 127.15
+      },
+      {
+        "label": "pH Level",
+        "valu": 7.7
+      },
+      {
+        "label": "Salinity",
+        "valu": 13.83
+      },
+      {
+        "label": "Turbidity",
+        "valu": 11.83
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 25.1
+      },
+      {
+        "label": "Nitrogen",
+        "valu": 0.0836
+      },
+      {
+        "label": "Phosphate(PO4)",
+        "valu": 0.0715
+      }
+    ],
+    "name": "KFL0036",
+    "alt_name": "Palm City Bridge",
+    "lat": 27.172512,
+    "lon": -80.260658
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.64
+      },
+      {
+        "label": "Flow Direction",
+        "valu": null
+      },
+      {
+        "label": "Flow Speed",
+        "valu": 1.1
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 9.03
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 3.08
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 1.01
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 3.66
+      },
+      {
+        "label": "Conductivity",
+        "valu": 35.28
+      },
+      {
+        "label": "Depth",
+        "valu": 0.89
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 6.509
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 89.58
+      },
+      {
+        "label": "FDOM",
+        "valu": 35
+      },
+      {
+        "label": "ORP",
+        "valu": 223.32
+      },
+      {
+        "label": "pH Level",
+        "valu": 8.2
+      },
+      {
+        "label": "Salinity",
+        "valu": 22.12
+      },
+      {
+        "label": "Turbidity",
+        "valu": 1.92
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 25.2
+      },
+      {
+        "label": "Nitrogen",
+        "valu": 0.0295
+      },
+      {
+        "label": "Phosphate(PO4)",
+        "valu": 0.0341
+      }
+    ],
+    "name": "KFL0035",
+    "alt_name": "Willoughby Creek",
+    "lat": 27.170757,
+    "lon": -80.202026
+  },
+  {
+    "data": [
+      {
+        "label": "Battery Voltage",
+        "valu": 12.36
+      },
+      {
+        "label": "Flow Direction",
+        "valu": null
+      },
+      {
+        "label": "Flow Speed",
+        "valu": 0.5
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 8.99
+      },
+      {
+        "label": "Blue/Green Algae",
+        "valu": 2.99
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 1.6
+      },
+      {
+        "label": "Chlorophyll a",
+        "valu": 6.37
+      },
+      {
+        "label": "Conductivity",
+        "valu": 31.85
+      },
+      {
+        "label": "Depth",
+        "valu": 1.13
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 6.31
+      },
+      {
+        "label": "Dissolved Oxygen",
+        "valu": 85.64
+      },
+      {
+        "label": "FDOM",
+        "valu": 33.2
+      },
+      {
+        "label": "ORP",
+        "valu": 224.96
+      },
+      {
+        "label": "pH Level",
+        "valu": 8
+      },
+      {
+        "label": "Salinity",
+        "valu": 19.78
+      },
+      {
+        "label": "Turbidity",
+        "valu": 1.7
+      },
+      {
+        "label": "Water Temp.",
+        "valu": 25.1
+      },
+      {
+        "label": "Phosphate(PO4)",
+        "valu": 0.036
+      }
+    ],
+    "name": "KFL0048",
+    "alt_name": "Manatee Pocket",
+    "lat": 27.153024322580674,
+    "lon": -80.19470908602159
+  }
+]
