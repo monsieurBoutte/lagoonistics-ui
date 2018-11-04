@@ -41,39 +41,6 @@ const MenuProps = {
   },
 };
 
-// //TODO: extract to util folder
-// const dataTypes = [
-//   'Dissolved Oxygen',
-//   'PH',
-//   'Salinty',
-//   'Chlorophyll',
-//   'Turbidity (NTU)',
-//   'Phosphate (mg P/L)',
-//   'Temperature (F)',
-//   'Blue/Green Algae (ug/L)',
-//   'Depth (ft)',
-//   'Direction (º)',
-// ];
-
-// //TODO: extract to util folder (maybe specific to st john)
-// const dataTypeCodeLookUp = dataType => {
-//   switch (dataType) {
-//     case 'Dissolved Oxygen':
-//       return 'DISSOLVED_OXYGEN_CUR';
-//     case 'PH':
-//       return 'PHOSPHATE_CUR';
-//     case 'Salinty':
-//       return 'SALINITY_CUR';
-//     case 'Turbidity (NTU)':
-//       return 'TURBIDITY_CUR'
-//     case 'Blue/Green Algae (ug/L)':
-//     case 'Chlorophyll':
-//     case 'Depth (ft)':
-//     case 'Direction (º)':
-//       return '';
-//   }
-// }
-
 const FilterSelection = props => {
   const [dataTypeSelection, setDataTypeSelection] = useState([])
   const { classes, pluckFromStJohnSensorList, saintJohnSensors } = props;

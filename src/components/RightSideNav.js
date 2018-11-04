@@ -12,6 +12,7 @@ import Switch from '@material-ui/core/Switch';
 import CodeIcon from '@material-ui/icons/Code';
 import GpsFixedIcon from '@material-ui/icons/GpsFixed';
 import GpsNotFixedIcon from '@material-ui/icons/GpsNotFixed';
+import * as SensorContext from '../context/SensorContext';
 
 const styles = theme => ({
   list: {
@@ -47,66 +48,72 @@ const RightSideNav = props => {
     handleChangedDataSet
   } = useDataSetSelection();
   return (
-    <div>
-      <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(!isOpen)}>
-        <div
-          tabIndex={0}
-          role="button"
-        >
-          <div className={classes.toolbar} />
-          <List
-            className={classes.list}
-            subheader={<ListSubheader component="div">Data Set Locations</ListSubheader>}
+    <SensorContext.Consumer>
+      {context => (
+        <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(!isOpen)}>
+          <div
+            tabIndex={0}
+            role="button"
           >
-            <ListItem>
-              <ListItemIcon>
-                {!!selectedDataSets.kilroy ? <GpsFixedIcon /> : <GpsNotFixedIcon />}
-              </ListItemIcon>
-              <ListItemText primary="Kilroy" />
-              <ListItemSecondaryAction>
-                <Switch
-                  onChange={() => handleChangedDataSet({ kilroy: !selectedDataSets.kilroy })}
-                  checked={!!selectedDataSets.kilroy}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                {!!selectedDataSets.lobo ? <GpsFixedIcon /> : <GpsNotFixedIcon />}
-              </ListItemIcon>
-              <ListItemText primary="Lobo" />
-              <ListItemSecondaryAction>
-                <Switch
-                  onChange={() => handleChangedDataSet({ lobo: !selectedDataSets.lobo })}
-                  checked={!!selectedDataSets.lobo}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                {!!selectedDataSets.saint_john ? <GpsFixedIcon /> : <GpsNotFixedIcon />}
-              </ListItemIcon>
-              <ListItemText primary="Saint John" />
-              <ListItemSecondaryAction>
-                <Switch
-                  onChange={() => handleChangedDataSet({ saint_john: !selectedDataSets.saint_john })}
-                  checked={!!selectedDataSets.saint_john}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
-          </List>
-          <Divider />
-          <List className={classes.list}>
-            <ListItem button>
-              <ListItemIcon>
-                <CodeIcon />
-              </ListItemIcon>
-              <ListItemText primary="other stuff" />
-            </ListItem>
-          </List>
-        </div>
-      </Drawer>
-    </div>
+            <div className={classes.toolbar} />
+            <List
+              className={classes.list}
+              subheader={<ListSubheader component="div">Data Set Locations</ListSubheader>}
+            >
+              <ListItem>
+                <ListItemIcon>
+                  {!!selectedDataSets.kilroy ? <GpsFixedIcon /> : <GpsNotFixedIcon />}
+                </ListItemIcon>
+                <ListItemText primary="Kilroy" />
+                <ListItemSecondaryAction>
+                  <Switch
+                    onChange={() => handleChangedDataSet({ kilroy: !selectedDataSets.kilroy })}
+                    checked={!!selectedDataSets.kilroy}
+                  />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  {!!selectedDataSets.lobo ? <GpsFixedIcon /> : <GpsNotFixedIcon />}
+                </ListItemIcon>
+                <ListItemText primary="Lobo" />
+                <ListItemSecondaryAction>
+                  <Switch
+                    onChange={() => handleChangedDataSet({ lobo: !selectedDataSets.lobo })}
+                    checked={!!selectedDataSets.lobo}
+                  />
+                </ListItemSecondaryAction>
+              </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  {!!selectedDataSets.saint_john ? <GpsFixedIcon /> : <GpsNotFixedIcon />}
+                </ListItemIcon>
+                <ListItemText primary="Saint John" />
+                <ListItemSecondaryAction>
+                  <Switch
+                    onChange={() => {
+                      handleChangedDataSet({ saint_john: !selectedDataSets.saint_john });
+                      context.toggleSaintJohnDataVisibility(!context.saintJohnDataVisibility);
+                    }}
+                    checked={!!selectedDataSets.saint_john}
+                  />
+                </ListItemSecondaryAction>
+              </ListItem>
+            </List>
+            <Divider />
+            <List className={classes.list}>
+              <ListItem button>
+                <ListItemIcon>
+                  <CodeIcon />
+                </ListItemIcon>
+                <ListItemText primary="other stuff" />
+              </ListItem>
+            </List>
+          </div>
+        </Drawer>
+      )}
+
+    </SensorContext.Consumer>
   );
 
 }

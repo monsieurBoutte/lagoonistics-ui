@@ -28,38 +28,43 @@ export const LeftSideBar = props => {
           />
           <Divider />
           <List>
-            {context.filteredStJohnSensorList.length > 0 && (
-              context.filteredStJohnSensorList.map((saintJohn, index) => (
-                <div key={`${index}-${saintJohn.metaData.attributes.LONG_NM}`}>
-                  <ListItem>
-                    <ul>
-                      <li>sensor: {saintJohn.metaData.attributes.LONG_NM}</li>
-                      <li>sensor id: {saintJohn.metaData.attributes.HYDRON_NUMBER}</li>
-                      <li>data type: {saintJohn.metaData.attributes.PARAM}</li>
-                      <li>latitude: {saintJohn.metaData.attributes.LAT_NO}</li>
-                      <li>longitude: {saintJohn.metaData.attributes.LONG_NO}</li>
-                      <li><a style={{ textDecoration: 'none' }} href={saintJohn.sensorGraphUrl} target="_blank">graph</a></li>
-                    </ul>
-                  </ListItem>
-                  <Divider />
-                </div>
-              ))
+            {context.saintJohnDataVisibility && (
+              <Fragment>
+                {context.filteredStJohnSensorList.length > 0 && (
+                  context.filteredStJohnSensorList.map((saintJohn, index) => (
+                    <div key={`${index}-${saintJohn.metaData.attributes.LONG_NM}`}>
+                      <ListItem>
+                        <ul>
+                          <li>sensor: {saintJohn.metaData.attributes.LONG_NM}</li>
+                          <li>sensor id: {saintJohn.metaData.attributes.HYDRON_NUMBER}</li>
+                          <li>data type: {saintJohn.metaData.attributes.PARAM}</li>
+                          <li>latitude: {saintJohn.metaData.attributes.LAT_NO}</li>
+                          <li>longitude: {saintJohn.metaData.attributes.LONG_NO}</li>
+                          <li><a style={{ textDecoration: 'none' }} href={saintJohn.sensorGraphUrl} target="_blank">graph</a></li>
+                        </ul>
+                      </ListItem>
+                      <Divider />
+                    </div>
+                  ))
+                )}
+                {context.filteredStJohnSensorList.length <= 0 && context.saintJohnSensors.map((saintJohn, index) => (
+                  <div key={`${index}-${saintJohn.metaData.attributes.LONG_NM}`}>
+                    <ListItem>
+                      <ul>
+                        <li>sensor: {saintJohn.metaData.attributes.LONG_NM}</li>
+                        <li>sensor id: {saintJohn.metaData.attributes.HYDRON_NUMBER}</li>
+                        <li>data type: {saintJohn.metaData.attributes.PARAM}</li>
+                        <li>latitude: {saintJohn.metaData.attributes.LAT_NO}</li>
+                        <li>longitude: {saintJohn.metaData.attributes.LONG_NO}</li>
+                        <li><a style={{ textDecoration: 'none' }} href={saintJohn.sensorGraphUrl} target="_blank">graph</a></li>
+                      </ul>
+                    </ListItem>
+                    <Divider />
+                  </div>
+                ))}
+              </Fragment>
             )}
-            {context.filteredStJohnSensorList.length <= 0 && context.saintJohnSensors.map((saintJohn, index) => (
-              <div key={`${index}-${saintJohn.metaData.attributes.LONG_NM}`}>
-                <ListItem>
-                  <ul>
-                    <li>sensor: {saintJohn.metaData.attributes.LONG_NM}</li>
-                    <li>sensor id: {saintJohn.metaData.attributes.HYDRON_NUMBER}</li>
-                    <li>data type: {saintJohn.metaData.attributes.PARAM}</li>
-                    <li>latitude: {saintJohn.metaData.attributes.LAT_NO}</li>
-                    <li>longitude: {saintJohn.metaData.attributes.LONG_NO}</li>
-                    <li><a style={{ textDecoration: 'none' }} href={saintJohn.sensorGraphUrl} target="_blank">graph</a></li>
-                  </ul>
-                </ListItem>
-                <Divider />
-              </div>
-            ))}
+
           </List>
         </Drawer>
       )

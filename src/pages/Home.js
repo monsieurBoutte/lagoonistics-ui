@@ -2,7 +2,6 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import LagoonMap from '../components/LagoonMap';
 import { LeftSideBar } from '../components/LeftSideBar';
-import { SensorProvider } from '../context/SensorProvider';
 
 const styles = theme => ({
   root: {
@@ -44,13 +43,11 @@ const Home = props => {
 
   return (
     <div className={classes.root}>
-      <SensorProvider>
-        <LeftSideBar classes={classes} />
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <LagoonMap />
-        </main>
-      </SensorProvider>
+      <LeftSideBar classes={classes} />
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+        <LagoonMap />
+      </main>
     </div>
   );
 }

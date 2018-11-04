@@ -26,6 +26,7 @@ const useFilteredStJohnSensorList = (originalStJohnSensorList, ...params) => {
 
 export const SensorProvider = props => {
   const [saintJohnSensorInfo, setSaintJohnSensorInfo] = useState([]);
+  const [saintJohnDataVisibility, setSaintJohnDataVisibility] = useState(true);
   const {
     filteredStJohnSensorList,
     setFilteredStJohnSensorList,
@@ -49,7 +50,9 @@ export const SensorProvider = props => {
         refreshSaintJohn: handleSaintJohnRefresh,
         filteredStJohnSensorList,
         setFilteredStJohnSensorList,
-        pluckFromStJohnSensorList
+        pluckFromStJohnSensorList,
+        saintJohnDataVisibility,
+        toggleSaintJohnDataVisibility: setSaintJohnDataVisibility
       }}
     >
       {props.children}
