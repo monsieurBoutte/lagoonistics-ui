@@ -4,7 +4,9 @@ import lagoonData from "../mock-data/lagoon-data.json";
 
 const Map = ReactMapboxGl({
   accessToken:
-    "pk.eyJ1IjoiZGRvcmlhOTIxIiwiYSI6ImNqbzFyaTlyajBlcm8za3FpeXVobDhnOXQifQ.cCd_N_-DvB2yn4BOHmdWyQ"
+    "pk.eyJ1IjoiZGRvcmlhOTIxIiwiYSI6ImNqbzFyaTlyajBlcm8za3FpeXVobDhnOXQifQ.cCd_N_-DvB2yn4BOHmdWyQ",
+  maxZoom: 16,
+  minZoom: 4
 });
 
 const mapStyle = {
@@ -83,17 +85,36 @@ const lagoonGeoJson = {
 };
 
 export default class LagoonMap extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(map, event) {
+    const features = map.queryRenderedFeatures(event.point);
+
+    if (features && features.length) {
+      const [featureClicked] = features.filter(f => f.layer.id === 'point_layer');
+
+      if (featureClicked) {
+        console.log(featureClicked.properties);
+      }
+    }
+  }
+
   render() {
     return (
       <div>
-        Lagoon Map
         <Map
           style={style.dark}
           center={[-81.012788, 28.680166]}
           zoom={[6]}
           containerStyle={mapStyle}
+          onClick={this.handleClick}
         >
           <Source id="lagoon_data" geoJsonSource={lagoonGeoJson} />
+
           <Layer
             id="base_layer"
             type="heatmap"
@@ -115,7 +136,12 @@ export default class LagoonMap extends React.Component {
             type="circle"
             paint={{
               "circle-radius": 4,
-              "circle-color": "blue",
+              "circle-color": [
+                'case',
+                ['>', ['get', 'delta'], 5],
+                'red',
+                'green'
+              ],
               "circle-opacity": {
                 stops: [[9, 0], [14, 1]]
               }
