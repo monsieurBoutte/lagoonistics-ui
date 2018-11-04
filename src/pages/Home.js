@@ -12,12 +12,19 @@ const styles = theme => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    position: 'fixed',
+    top: 90,
+    bottom: 20,
+    left: 20,
+    zIndex: 1201
   },
   secondaryColor: {
     color: theme.palette.secondary.main,
   },
   drawerPaper: {
     width: drawerWidth,
+    position: 'relative',
+    borderRadius: 6
   },
   content: {
     flexGrow: 1,
@@ -28,7 +35,7 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar,
 });
 
-const drawerWidth = 300;
+const drawerWidth = 380;
 
 const Home = props => {
   const [saintJohnSensorInfo, setSaintJohnSensorInfo] = useState([]);

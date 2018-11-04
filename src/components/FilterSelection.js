@@ -13,9 +13,9 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 120,
-    maxWidth: 300,
+    padding: `${theme.spacing.unit}px 0`,
+    minWidth: `calc(100% - ${theme.spacing.unit * 2}px)`,
+    margin: `0 ${theme.spacing.unit}px`
   },
   chips: {
     display: 'flex',
@@ -78,7 +78,7 @@ const FilterSelection = props => {
             </div>
           )}
           MenuProps={MenuProps}
-          style={{ width: '280px' }}
+          style={{ width: '100%' }}
         >
           {dataTypes.map(name => (
             <MenuItem key={name} value={name}>

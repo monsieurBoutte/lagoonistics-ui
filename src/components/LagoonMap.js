@@ -68,7 +68,7 @@ export default class LagoonMap extends React.Component {
           stops: [[1, 20], [5, 100], [14, 160]]
         },
         "heatmap-opacity": {
-          stops: [[1, 0.25], [7, 0.6], [12, 0.9], [14, 0]]
+          stops: [[1, 0.25], [7, 0.6], [12, 0.9], [13, 0]]
         }
       }
     };
@@ -141,7 +141,7 @@ export default class LagoonMap extends React.Component {
           type="heatmap"
           paint={{
             "heatmap-color": "#99d594",
-            "heatmap-opacity": 0.1
+            "heatmap-opacity": 0.08
           }}
         />
         <Layer
