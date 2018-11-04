@@ -1,9 +1,28 @@
 import React from "react";
 import ReactMapboxGl, { Layer, Source } from "react-mapbox-gl";
-// import lagoonData from "../mock-data/lagoon-data.json";
 import axios from "axios";
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Snackbar from '@material-ui/core/Snackbar';
+import Button from '@material-ui/core/Button';
 
-const SENSOR_READING = "Temperature";
+const SENSOR_READING = "Dissolved O2";
+const DELTAS = {
+  'Temperature': 2,   // 75 -> 84
+  'Salinity': 1,    // 24.89 -> 28.3
+  'Dissolved O2': 1,    // 4 -> 8
+  'pH': 0.3             // 7.1 -> 7.9
+};
+const HEAT_MAP_BASE = {
+  "heatmap-intensity": {
+    stops: [[0, 0], [7, 2], [10, 5]]
+  },
+  "heatmap-radius": {
+    stops: [[1, 20], [5, 100], [14, 160]]
+  },
+  "heatmap-opacity": {
+    stops: [[1, 0.25], [7, 0.6], [12, 0.9], [13, 0]]
+  }
+};
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -26,10 +45,12 @@ export default class LagoonMap extends React.Component {
     super(props);
 
     this.state = {
+      center: [-87.6500523, 41.850033], // Center of US
+      zoom: [3],
       lagoonGeoJson: null,
       pointLayerPaint: {
-        "circle-radius": 6,
-        "circle-color": ["case", [">", ["get", "delta"], 5], "red", "green"],
+        "circle-radius": 5,
+        "circle-color": ["case", [">", ["get", "delta"], 5], "red", "#ffffbf"],
         "circle-opacity": {
           stops: [[9, 0], [14, 1]]
         }
@@ -74,6 +95,8 @@ export default class LagoonMap extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleMapLoad = this.handleMapLoad.bind(this);
+    this.handleSnackClose = this.handleSnackClose.bind(this);
   }
 
   componentDidMount() {
@@ -90,6 +113,63 @@ export default class LagoonMap extends React.Component {
         }
       });
     });
+
+    this.setHeatMapForReading(SENSOR_READING);
+  }
+
+  setHeatMapForReading(sensorReadingKey) {
+    const plusMinusDelta = DELTAS[sensorReadingKey];
+    const heatmapWeight = [
+      "interpolate",
+      ["linear"],
+      ["get", "delta"]
+    ];
+    const heatmapColor = [
+      "interpolate",
+      ["linear"],
+      ["heatmap-density"]
+    ];
+
+    if (plusMinusDelta) {
+      // negative deltas
+      heatmapWeight.push(plusMinusDelta * -1);
+      heatmapWeight.push(1);
+      heatmapColor.push(plusMinusDelta * -1);
+      heatmapColor.push('#d7191c'); // dark red
+
+      heatmapWeight.push((plusMinusDelta / 2) * -1);
+      heatmapWeight.push(0.5);
+      heatmapColor.push((plusMinusDelta / 2) * -1);
+      heatmapColor.push('#fdae61'); // light red
+
+      // show nothing for zero changes
+      heatmapWeight.push(0);
+      heatmapWeight.push(0);
+      heatmapColor.push(0);
+      heatmapColor.push('rgba(0,0,0,0)'); // nuetral: #ffffbf
+
+      // positive deltas
+      heatmapWeight.push((plusMinusDelta / 2));
+      heatmapWeight.push(0.5);
+      heatmapColor.push((plusMinusDelta / 2));
+      heatmapColor.push('#abd9e9'); // light blue
+
+      heatmapWeight.push(plusMinusDelta);
+      heatmapWeight.push(1);
+      heatmapColor.push(plusMinusDelta);
+      heatmapColor.push('#2c7bb6'); // dark blue
+    }
+
+    const updatedHeatmapPaint = {
+      ...HEAT_MAP_BASE,
+      'heatmap-weight': heatmapWeight,
+      'heatmap-color': heatmapColor
+    };
+
+    console.log({ updatedHeatmapPaint });
+    this.setState({
+      heatLayerPaint: updatedHeatmapPaint
+    });
   }
 
   sensorToFeature(sensor) {
@@ -98,7 +178,7 @@ export default class LagoonMap extends React.Component {
     return {
       type: "Feature",
       properties: {
-        delta: reading.delta,
+        delta: (reading && reading.delta * -1) || 0,
         sensorId: sensor.sensorId
       },
       geometry: {
@@ -108,8 +188,32 @@ export default class LagoonMap extends React.Component {
     };
   }
 
-  fetchSensorData() {
-    return axios.get("http://50ef6569.ngrok.io/lobo").then(({ data }) => data);
+  async fetchSensorData() {
+    let data = [];
+
+    try {
+      // await new Promise(resolve => setTimeout(resolve, 7000));
+      const response = await axios.get("http://50ef6569.ngrok.io");
+      data = response.data;
+    } catch(err)  {
+      this.setState({
+        err,
+        showError: true
+      });
+    }
+
+    return data;
+  }
+
+  handleMapLoad(map) {
+    const center = [-81.012788, 28.680166];
+    const point = map.project(center);
+
+    point.x -= 40;
+
+    const newCenter = map.unproject(point);
+
+    this.setState({center: newCenter, zoom: [6.5]});
   }
 
   handleClick(map, event) {
@@ -126,37 +230,66 @@ export default class LagoonMap extends React.Component {
     }
   }
 
+  handleSnackClose() {
+    this.setState({
+      showError: false
+    });
+  }
+
   render() {
     return (
-      <Map
-        style={style.dark}
-        center={[-81.012788, 28.680166]}
-        zoom={[6]}
-        containerStyle={mapStyle}
-        onClick={this.handleClick}
-      >
-        <Source id="lagoon_data" geoJsonSource={this.state.lagoonGeoJson} />
-        <Layer
-          id="base_layer"
-          type="heatmap"
-          paint={{
-            "heatmap-color": "#99d594",
-            "heatmap-opacity": 0.08
-          }}
+      <div style={{height: '100%'}}>
+        <Map
+          style={style.dark}
+          center={this.state.center}
+          zoom={this.state.zoom}
+          containerStyle={mapStyle}
+          onStyleLoad={this.handleMapLoad}
+          onClick={this.handleClick}
+        >
+          <Layer
+            id="base_layer"
+            type="heatmap"
+            paint={{
+              "heatmap-color": "#99d594",
+              "heatmap-opacity": 0.05
+            }}
+          />
+
+          {!this.state.lagoonGeoJson && !this.state.err &&
+            <LinearProgress/>
+          }
+
+          {this.state.lagoonGeoJson &&
+            <div>
+              <Source id="lagoon_data" geoJsonSource={this.state.lagoonGeoJson} />
+              <Layer
+                id="heatmap_layer"
+                type="heatmap"
+                paint={this.state.heatLayerPaint}
+                sourceId="lagoon_data"
+              />
+              <Layer
+                id="point_layer"
+                type="circle"
+                paint={this.state.pointLayerPaint}
+                sourceId="lagoon_data"
+              />
+            </div>
+          }
+        </Map>
+
+        <Snackbar
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          open={this.state.showError}
+          message={<span id="message-id">Error loading data</span>}
+          action={
+            <Button color="secondary" size="small" onClick={this.handleSnackClose}>
+              Ok
+            </Button>
+          }
         />
-        <Layer
-          id="heatmap_layer"
-          type="heatmap"
-          paint={this.state.heatLayerPaint}
-          sourceId="lagoon_data"
-        />
-        <Layer
-          id="point_layer"
-          type="circle"
-          paint={this.state.pointLayerPaint}
-          sourceId="lagoon_data"
-        />
-      </Map>
+      </div>
     );
   }
 }
