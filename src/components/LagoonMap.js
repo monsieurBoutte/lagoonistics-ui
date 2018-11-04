@@ -26,9 +26,9 @@ const layerPaint = {
   ],
   // Increase the heatmap color weight weight by zoom level
   // heatmap-ntensity is a multiplier on top of heatmap-weight
-  // "heatmap-intensity": {
-  //   stops: [[0, 0], [5, 0.25]]
-  // },
+  "heatmap-intensity": {
+    stops: [[0, 0], [7, 1], [10, 2]]
+  },
   // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
   // Begin color ramp at 0-stop with a 0-transparancy color
   // to create a blur-like effect.
@@ -55,7 +55,8 @@ const layerPaint = {
 };
 
 const style = {
-  dark: "mapbox://styles/mapbox/dark-v9"
+  dark: "mapbox://styles/mapbox/dark-v9",
+  streets: "mapbox://styles/mapbox/streets-v9"
 };
 
 const lagoonFeatures = lagoonData.map((item, i) => {
