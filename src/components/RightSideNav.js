@@ -10,11 +10,12 @@ import NatureIcon from '@material-ui/icons/Nature';
 import CodeIcon from '@material-ui/icons/Code';
 
 
-const styles = {
+const styles = theme => ({
   list: {
     width: 250,
   },
-};
+  toolbar: theme.mixins.toolbar,
+});
 
 export const useToggleDrawer = initialState => {
   const [isOpen, setIsOpen] = useState(initialState);
@@ -38,6 +39,7 @@ const RightSideNav = props => {
           onClick={() => setIsOpen(!isOpen)}
           onKeyDown={() => setIsOpen(!isOpen)}
         >
+          <div className={classes.toolbar} />
           <List className={classes.list}>
             <ListItem button>
               <ListItemIcon>

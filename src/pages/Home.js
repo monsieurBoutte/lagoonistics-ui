@@ -14,12 +14,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import NatureIcon from '@material-ui/icons/Nature';
-import LagoonMap from '../components/LagoonMap';
 import { fetchSaintJohnSensors } from '../services/saintJohn-service';
+import LagoonMap from '../components/LagoonMap';
 
 const styles = theme => ({
   root: {
     display: 'flex',
+    backgroundColor: '#262D26',
   },
   drawer: {
     width: drawerWidth,

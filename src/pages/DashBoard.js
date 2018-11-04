@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import NavBar from '../components/NavBar';
-import SideNav from '../components/SideNav';
+import RightSideNav from '../components/RightSideNav';
 
 export const DashBoard = props => (
   <div>
     <NavBar />
-    <SideNav />
+    <RightSideNav />
     {props.children}
   </div>
 );

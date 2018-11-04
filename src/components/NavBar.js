@@ -9,7 +9,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SettingsIcon from '@material-ui/icons/Settings';
 import SearchIcon from '@material-ui/icons/Search';
-import SideNav, { useToggleDrawer } from '../components/SideNav'
+import RightSideNav, { useToggleDrawer } from './RightSideNav'
 
 const styles = theme => ({
   root: {
@@ -18,9 +18,14 @@ const styles = theme => ({
   grow: {
     flexGrow: 1,
   },
+  appBar: {
+    position: 'absolute',
+    width: '100%',
+    zIndex: '1400',
+  },
   menuButton: {
     marginLeft: 4,
-    marginRight: - 18,
+    marginRight: -18,
   },
   title: {
     display: 'none',
@@ -77,7 +82,7 @@ const NavBar = props => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.appBar}>
         <Toolbar>
           <Typography className={classes.title} variant="h6" color="inherit" noWrap>
             Lagoonistics
@@ -100,7 +105,7 @@ const NavBar = props => {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <SideNav isOpen={isOpen} setIsOpen={setIsOpen} />
+      <RightSideNav isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 }
