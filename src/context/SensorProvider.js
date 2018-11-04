@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchSaintJohnSensors } from '../services/saintJohn-service';
+import { fetchSensorData } from '../services/kilroyAndLobo-service';
 import * as SensorContext from './SensorContext';
 
 const useFilteredStJohnSensorList = (originalStJohnSensorList, ...params) => {
@@ -26,6 +27,7 @@ const useFilteredStJohnSensorList = (originalStJohnSensorList, ...params) => {
 
 export const SensorProvider = props => {
   const [saintJohnSensorInfo, setSaintJohnSensorInfo] = useState([]);
+  const [kilroyAndLoboSensorInfo, setKilroyAndLoboSensorInfo] = useState([]);
   const [saintJohnDataVisibility, setSaintJohnDataVisibility] = useState(true);
   const [kilroyDataVisibility, setKilroyDataVisibility] = useState(true);
   const [loboDataVisibility, setLoboDataVisibility] = useState(true);
@@ -37,13 +39,22 @@ export const SensorProvider = props => {
 
   useEffect(() => {
     try {
-      fetchSaintJohnSensors().then(results => setSaintJohnSensorInfo(results))
+      fetchSaintJohnSensors().then(results => setSaintJohnSensorInfo(results));
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      fetchSensorData().then(results => setKilroyAndLoboSensorInfo(results));
     } catch (error) {
       console.error(error);
     }
   }, []);
 
   const handleSaintJohnRefresh = () => setSaintJohnSensorInfo(fetchSaintJohnSensors());
+  const handleKilroyAndLoboRefresh = () => setSaintJohnSensorInfo(fetchSaintJohnSensors());
 
   return (
     <SensorContext.Provider
@@ -58,7 +69,9 @@ export const SensorProvider = props => {
         kilroyDataVisibility,
         toggleKilroyDataVisibility: setKilroyDataVisibility,
         loboDataVisibility,
-        toggleLoboDataVisibility: setLoboDataVisibility
+        toggleLoboDataVisibility: setLoboDataVisibility,
+        kilroyAndLoboSensorInfo,
+        refreshKilroyAndLoboSensorInfo: handleKilroyAndLoboRefresh
       }}
     >
       {props.children}
