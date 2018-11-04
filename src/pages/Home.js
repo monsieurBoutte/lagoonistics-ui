@@ -3,7 +3,6 @@ import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +14,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import NatureIcon from '@material-ui/icons/Nature';
 import { fetchSaintJohnSensors } from '../services/saintJohn-service';
+import { LeftSideBar } from '../components/LeftSideBar';
 import LagoonMap from '../components/LagoonMap';
 
 const styles = theme => ({
@@ -25,6 +25,9 @@ const styles = theme => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+  },
+  secondaryColor: {
+    color: theme.palette.secondary.main,
   },
   drawerPaper: {
     width: drawerWidth,
@@ -38,7 +41,7 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar,
 });
 
-const drawerWidth = 250;
+const drawerWidth = 300;
 
 const Home = props => {
   const [saintJohnSensorInfo, setSaintJohnSensorInfo] = useState([]);
@@ -50,37 +53,7 @@ const Home = props => {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.toolbar} />
-        <List>
-          <ListItem>
-            <NatureIcon />
-            <ListItemText primary="Lagoon sensor" />
-            <ul>
-              <li>Water Temp: 80%</li>
-              <li>DO: 4</li>
-              <li>PH: 42</li>
-            </ul>
-          </ListItem>
-          <ListItem>
-            <NatureIcon />
-            <ListItemText primary="Hollywood sensor" />
-            <br />
-            <ul>
-              <li>Water Temp: 60%</li>
-              <li>DO: 9</li>
-              <li>PH: 72</li>
-            </ul>
-          </ListItem>
-        </List>
-      </Drawer>
+      <LeftSideBar classes={classes} />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <LagoonMap />
