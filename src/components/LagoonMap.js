@@ -1,9 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactMapboxGl, { Layer, Source } from "react-mapbox-gl";
 import axios from "axios";
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 const SENSOR_READING = "Dissolved O2";
 const DELTAS = {
@@ -13,9 +16,25 @@ const DELTAS = {
   'pH': 0.3             // 7.1 -> 7.9
 };
 const HEAT_MAP_BASE = {
-  "heatmap-intensity": {
-    stops: [[0, 0], [7, 2], [10, 5]]
-  },
+  "heatmap-color": [
+    "interpolate",
+    ["linear"],
+    ["heatmap-density"],
+    0, "rgba(0,0,0,0)",
+    0.2, "#d7191c",
+    0.4, "#fdae61",
+    0.6, "#ffffbf",
+    0.8, "#abd9e9",
+    1, "#2c7bb6"
+  ],
+  "heatmap-intensity": [
+    // stops: [[0, 0], [7, 2], [10, 5]]
+    "interpolate",
+    ["linear"],
+    ["zoom"],
+    0, 1,
+    9, 3
+  ],
   "heatmap-radius": {
     stops: [[1, 20], [5, 100], [14, 160]]
   },
@@ -37,7 +56,8 @@ const style = {
 };
 
 const mapStyle = {
-  height: "100%"
+  height: 'auto',
+  flex: '1 0 auto'
 };
 
 export default class LagoonMap extends React.Component {
@@ -47,6 +67,7 @@ export default class LagoonMap extends React.Component {
     this.state = {
       center: [-87.6500523, 41.850033], // Center of US
       zoom: [3],
+      currentMapType: 1,
       lagoonGeoJson: null,
       pointLayerPaint: {
         "circle-radius": 5,
@@ -55,48 +76,13 @@ export default class LagoonMap extends React.Component {
           stops: [[9, 0], [14, 1]]
         }
       },
-      heatLayerPaint: {
-        "heatmap-weight": [
-          "interpolate",
-          ["linear"],
-          ["get", "delta"],
-          -0.1,
-          0.5,
-          0,
-          0, // if delta is zero show zero weight
-          5,
-          0.5,
-          10,
-          1
-        ],
-        "heatmap-intensity": {
-          stops: [[0, 0], [7, 1], [10, 2]]
-        },
-        "heatmap-color": [
-          "interpolate",
-          ["linear"],
-          ["heatmap-density"],
-          0,
-          "rgba(0,0,0,0)",
-          0.25,
-          "#99d594", // green
-          0.5,
-          "#ffffbf", // yellow
-          1,
-          "#fc8d59" // red
-        ],
-        "heatmap-radius": {
-          stops: [[1, 20], [5, 100], [14, 160]]
-        },
-        "heatmap-opacity": {
-          stops: [[1, 0.25], [7, 0.6], [12, 0.9], [13, 0]]
-        }
-      }
+      heatLayerPaint: HEAT_MAP_BASE
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleMapLoad = this.handleMapLoad.bind(this);
     this.handleSnackClose = this.handleSnackClose.bind(this);
+    this.handleMapChange = this.handleMapChange.bind(this);
   }
 
   componentDidMount() {
@@ -112,12 +98,24 @@ export default class LagoonMap extends React.Component {
           }
         }
       });
-    });
 
-    this.setHeatMapForReading(SENSOR_READING);
+      let min, max;
+      const d = data.map(item => {
+        const reading = item.data.find(item => item.label === SENSOR_READING);
+
+        return reading.delta;
+      }).sort();
+
+      console.log({ d });
+
+      min = Math.abs(d[0]);
+      max = d[d.length - 1];
+
+      this.setHeatMapForReading(SENSOR_READING, min, max);
+    });
   }
 
-  setHeatMapForReading(sensorReadingKey) {
+  setHeatMapForReading(sensorReadingKey, min, max) {
     const plusMinusDelta = DELTAS[sensorReadingKey];
     const heatmapWeight = [
       "interpolate",
@@ -129,41 +127,73 @@ export default class LagoonMap extends React.Component {
       ["linear"],
       ["heatmap-density"]
     ];
+    // WEIGHT
+    // {
+    //   "interpolate",
+    //   ["linear"],
+    //   ["get", "mag"],
+    //   offset, 0,
+    //   max + offset, 1
+    // }
 
     if (plusMinusDelta) {
-      // negative deltas
-      heatmapWeight.push(plusMinusDelta * -1);
-      heatmapWeight.push(1);
-      heatmapColor.push(plusMinusDelta * -1);
-      heatmapColor.push('#d7191c'); // dark red
 
-      heatmapWeight.push((plusMinusDelta / 2) * -1);
-      heatmapWeight.push(0.5);
-      heatmapColor.push((plusMinusDelta / 2) * -1);
-      heatmapColor.push('#fdae61'); // light red
+      // [offset ... max + offset]
+
+
+
+      // COLOR
+      // {
+      //   "interpolate",
+      //   ["linear"],
+      //   ["heatmap-density"],
+      //   0, "rgba(33,102,172,0)",
+      //   0.2, "rgb(103,169,207)",
+      //   0.4, "rgb(209,229,240)",
+      //   0.6, "rgb(253,219,199)",
+      //   0.8, "rgb(239,138,98)",
+      //   1, "rgb(178,24,43)"
+      // }
+
+      // negative deltas
+      // heatmapWeight.push(plusMinusDelta );
+      // heatmapWeight.push(1);
+      // heatmapColor.push(plusMinusDelta * -1);
+      // heatmapColor.push('#d7191c'); // dark red
+
+      // heatmapWeight.push((plusMinusDelta / 2) + 0.009999999999999787);
+      // heatmapWeight.push(0.5);
+      // heatmapColor.push((plusMinusDelta / 2) * -1);
+      // heatmapColor.push('#fdae61'); // light red
 
       // show nothing for zero changes
-      heatmapWeight.push(0);
-      heatmapWeight.push(0);
-      heatmapColor.push(0);
-      heatmapColor.push('rgba(0,0,0,0)'); // nuetral: #ffffbf
+      // heatmapWeight.push(0);
+      // heatmapWeight.push(0);
+      // heatmapColor.push(0);
+      // heatmapColor.push('rgba(0,0,0,0)'); // nuetral: #ffffbf
 
       // positive deltas
-      heatmapWeight.push((plusMinusDelta / 2));
-      heatmapWeight.push(0.5);
-      heatmapColor.push((plusMinusDelta / 2));
-      heatmapColor.push('#abd9e9'); // light blue
+      // heatmapWeight.push((plusMinusDelta / 2));
+      // heatmapWeight.push(0.5);/
+      // heatmapColor.push((plusMinusDelta / 2));
+      // heatmapColor.push('#abd9e9'); // light blue
 
-      heatmapWeight.push(plusMinusDelta);
-      heatmapWeight.push(1);
-      heatmapColor.push(plusMinusDelta);
-      heatmapColor.push('#2c7bb6'); // dark blue
+      // heatmapWeight.push(plusMinusDelta);
+      // heatmapWeight.push(1);
+      // heatmapColor.push(plusMinusDelta);
+      // heatmapColor.push('#2c7bb6'); // dark blue
     }
+
+    heatmapWeight.push(min);
+    heatmapWeight.push(0);
+
+    heatmapWeight.push(min + max);
+    heatmapWeight.push(1);
 
     const updatedHeatmapPaint = {
       ...HEAT_MAP_BASE,
       'heatmap-weight': heatmapWeight,
-      'heatmap-color': heatmapColor
+      // 'heatmap-color': heatmapColor
     };
 
     console.log({ updatedHeatmapPaint });
@@ -179,6 +209,7 @@ export default class LagoonMap extends React.Component {
       type: "Feature",
       properties: {
         delta: (reading && reading.delta * -1) || 0,
+        value: reading.value,
         sensorId: sensor.sensorId
       },
       geometry: {
@@ -221,7 +252,7 @@ export default class LagoonMap extends React.Component {
 
     if (features && features.length) {
       const [featureClicked] = features.filter(
-        f => f.layer.id === "point_layer"
+        f => f.layer.id === "heatmap_point_layer"
       );
 
       if (featureClicked) {
@@ -236,9 +267,15 @@ export default class LagoonMap extends React.Component {
     });
   }
 
+  handleMapChange(event, value) {
+    this.setState({
+      currentMapType: value
+    })
+  }
+
   render() {
     return (
-      <div style={{height: '100%'}}>
+      <div style={{display: 'flex', height: 'auto', flex: '1 0 auto', position: 'relative'}}>
         <Map
           style={style.dark}
           center={this.state.center}
@@ -261,23 +298,53 @@ export default class LagoonMap extends React.Component {
           }
 
           {this.state.lagoonGeoJson &&
-            <div>
+            <Fragment>
               <Source id="lagoon_data" geoJsonSource={this.state.lagoonGeoJson} />
-              <Layer
-                id="heatmap_layer"
-                type="heatmap"
-                paint={this.state.heatLayerPaint}
-                sourceId="lagoon_data"
-              />
-              <Layer
-                id="point_layer"
-                type="circle"
-                paint={this.state.pointLayerPaint}
-                sourceId="lagoon_data"
-              />
-            </div>
+
+              {this.state.currentMapType === 0 && (
+                <Fragment>
+                  <Layer
+                    id="heatmap_layer"
+                    type="heatmap"
+                    paint={this.state.heatLayerPaint}
+                    sourceId="lagoon_data"
+                  />
+                  <Layer
+                    id="heatmap_point_layer"
+                    type="circle"
+                    paint={this.state.pointLayerPaint}
+                    sourceId="lagoon_data"
+                  />
+                </Fragment>
+              )}
+
+              {this.state.currentMapType === 1 && (
+                <Fragment>
+                  <Layer
+                    id="point_layer"
+                    type="circle"
+                    paint={{
+                      "circle-color": "#ffffbf"
+                    }}
+                    sourceId="lagoon_data"
+                  />
+                </Fragment>
+              )}
+            </Fragment>
           }
         </Map>
+
+        <Paper square style={{position: 'absolute',top: '20px',right: '20px'}}>
+          <Tabs
+            value={this.state.currentMapType}
+            indicatorColor="primary"
+            textColor="primary"
+            onChange={this.handleMapChange}
+          >
+            <Tab label="Heatmap" />
+            <Tab label="Points" />
+          </Tabs>
+        </Paper>
 
         <Snackbar
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
