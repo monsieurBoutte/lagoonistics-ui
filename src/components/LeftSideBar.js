@@ -35,6 +35,7 @@ export const LeftSideBar = props => {
                     <div key={`${index}-${saintJohn.metaData.attributes.LONG_NM}`}>
                       <ListItem>
                         <ul>
+                          <li>source: Saint John</li>
                           <li>sensor: {saintJohn.metaData.attributes.LONG_NM}</li>
                           <li>sensor id: {saintJohn.metaData.attributes.HYDRON_NUMBER}</li>
                           <li>data type: {saintJohn.metaData.attributes.PARAM}</li>
@@ -51,6 +52,7 @@ export const LeftSideBar = props => {
                   <div key={`${index}-${saintJohn.metaData.attributes.LONG_NM}`}>
                     <ListItem>
                       <ul>
+                        <li>source: Saint John</li>
                         <li>sensor: {saintJohn.metaData.attributes.LONG_NM}</li>
                         <li>sensor id: {saintJohn.metaData.attributes.HYDRON_NUMBER}</li>
                         <li>data type: {saintJohn.metaData.attributes.PARAM}</li>

@@ -12,6 +12,7 @@ const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    flex: '0 0 auto',
   },
   formControl: {
     paddingBottom: `${(theme.spacing.unit + 4)}px`,
