@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
-import NatureIcon from '@material-ui/icons/Nature';
 import CodeIcon from '@material-ui/icons/Code';
 import GpsFixedIcon from '@material-ui/icons/GpsFixed';
 import GpsNotFixedIcon from '@material-ui/icons/GpsNotFixed';
-import { get } from 'lodash/get';
 
 const styles = theme => ({
   list: {

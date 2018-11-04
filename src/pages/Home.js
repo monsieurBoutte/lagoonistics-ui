@@ -31,12 +31,7 @@ const styles = theme => ({
 const drawerWidth = 300;
 
 const Home = props => {
-  const [saintJohnSensorInfo, setSaintJohnSensorInfo] = useState([]);
   const { classes } = props;
-
-  useEffect(() => {
-    setSaintJohnSensorInfo(fetchSaintJohnSensors());
-  }, [])
 
   return (
     <div className={classes.root}>
