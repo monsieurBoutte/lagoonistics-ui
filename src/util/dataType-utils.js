@@ -26,5 +26,7 @@ export const dataTypeCodeLookUp = dataType => {
     case 'Depth (ft)':
     case 'Direction (º)':
       return '';
+    default:
+      return '';
   }
 }

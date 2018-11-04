@@ -27,6 +27,8 @@ const useFilteredStJohnSensorList = (originalStJohnSensorList, ...params) => {
 export const SensorProvider = props => {
   const [saintJohnSensorInfo, setSaintJohnSensorInfo] = useState([]);
   const [saintJohnDataVisibility, setSaintJohnDataVisibility] = useState(true);
+  const [kilroyDataVisibility, setKilroyDataVisibility] = useState(true);
+  const [loboDataVisibility, setLoboDataVisibility] = useState(true);
   const {
     filteredStJohnSensorList,
     setFilteredStJohnSensorList,
@@ -52,7 +54,11 @@ export const SensorProvider = props => {
         setFilteredStJohnSensorList,
         pluckFromStJohnSensorList,
         saintJohnDataVisibility,
-        toggleSaintJohnDataVisibility: setSaintJohnDataVisibility
+        toggleSaintJohnDataVisibility: setSaintJohnDataVisibility,
+        kilroyDataVisibility,
+        toggleKilroyDataVisibility: setKilroyDataVisibility,
+        loboDataVisibility,
+        toggleLoboDataVisibility: setLoboDataVisibility
       }}
     >
       {props.children}

@@ -67,7 +67,10 @@ const RightSideNav = props => {
                 <ListItemText primary="Kilroy" />
                 <ListItemSecondaryAction>
                   <Switch
-                    onChange={() => handleChangedDataSet({ kilroy: !selectedDataSets.kilroy })}
+                    onChange={() => {
+                      handleChangedDataSet({ kilroy: !selectedDataSets.kilroy });
+                      context.toggleKilroyDataVisibility(!context.kilroyDataVisibility);
+                    }}
                     checked={!!selectedDataSets.kilroy}
                   />
                 </ListItemSecondaryAction>
@@ -79,7 +82,10 @@ const RightSideNav = props => {
                 <ListItemText primary="Lobo" />
                 <ListItemSecondaryAction>
                   <Switch
-                    onChange={() => handleChangedDataSet({ lobo: !selectedDataSets.lobo })}
+                    onChange={() => {
+                      handleChangedDataSet({ lobo: !selectedDataSets.lobo });
+                      context.toggleLoboDataVisibility(!context.loboDataVisibility);
+                    }}
                     checked={!!selectedDataSets.lobo}
                   />
                 </ListItemSecondaryAction>
@@ -98,15 +104,6 @@ const RightSideNav = props => {
                     checked={!!selectedDataSets.saint_john}
                   />
                 </ListItemSecondaryAction>
-              </ListItem>
-            </List>
-            <Divider />
-            <List className={classes.list}>
-              <ListItem button>
-                <ListItemIcon>
-                  <CodeIcon />
-                </ListItemIcon>
-                <ListItemText primary="other stuff" />
               </ListItem>
             </List>
           </div>
