@@ -195,7 +195,7 @@ export default class LagoonMap extends React.Component {
       // await new Promise(resolve => setTimeout(resolve, 7000));
       const response = await axios.get("http://50ef6569.ngrok.io");
       data = response.data;
-    } catch(err)  {
+    } catch (err) {
       this.setState({
         err,
         showError: true
@@ -213,7 +213,7 @@ export default class LagoonMap extends React.Component {
 
     const newCenter = map.unproject(point);
 
-    this.setState({center: newCenter, zoom: [6.5]});
+    this.setState({ center: newCenter, zoom: [6.5] });
   }
 
   handleClick(map, event) {
@@ -238,7 +238,7 @@ export default class LagoonMap extends React.Component {
 
   render() {
     return (
-      <div style={{height: '100%'}}>
+      <div style={{ height: '100%' }}>
         <Map
           style={style.dark}
           center={this.state.center}
@@ -257,7 +257,7 @@ export default class LagoonMap extends React.Component {
           />
 
           {!this.state.lagoonGeoJson && !this.state.err &&
-            <LinearProgress/>
+            <LinearProgress />
           }
 
           {this.state.lagoonGeoJson &&
