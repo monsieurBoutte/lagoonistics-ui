@@ -16,7 +16,10 @@ const styles = theme => ({
     left: 20,
     zIndex: 1201,
     minHeight: 400,
-    display: 'flex'
+    display: 'flex',
+    maxHeight: 'calc(100% - 120px)',
+    overflow: 'scroll',
+    borderRadius: '6px'
   },
   secondaryColor: {
     color: theme.palette.secondary.main,
