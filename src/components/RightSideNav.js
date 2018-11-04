@@ -6,14 +6,16 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import NatureIcon from '@material-ui/icons/Nature';
+import CodeIcon from '@material-ui/icons/Code';
 
-const styles = {
+
+const styles = theme => ({
   list: {
     width: 250,
   },
-};
+  toolbar: theme.mixins.toolbar,
+});
 
 export const useToggleDrawer = initialState => {
   const [isOpen, setIsOpen] = useState(initialState);
@@ -25,22 +27,23 @@ export const useToggleDrawer = initialState => {
 
 }
 
-const SideNav = props => {
+const RightSideNav = props => {
   const { classes, isOpen, setIsOpen } = props;
 
   return (
     <div>
-      <Drawer open={isOpen} onClose={() => setIsOpen(!isOpen)}>
+      <Drawer anchor="right" open={isOpen} onClose={() => setIsOpen(!isOpen)}>
         <div
           tabIndex={0}
           role="button"
           onClick={() => setIsOpen(!isOpen)}
           onKeyDown={() => setIsOpen(!isOpen)}
         >
+          <div className={classes.toolbar} />
           <List className={classes.list}>
             <ListItem button>
               <ListItemIcon>
-                <MailIcon />
+                <NatureIcon />
               </ListItemIcon>
               <ListItemText primary="sensors" />
             </ListItem>
@@ -49,7 +52,7 @@ const SideNav = props => {
           <List className={classes.list}>
             <ListItem button>
               <ListItemIcon>
-                <InboxIcon />
+                <CodeIcon />
               </ListItemIcon>
               <ListItemText primary="other stuff" />
             </ListItem>
@@ -61,4 +64,4 @@ const SideNav = props => {
 
 }
 
-export default withStyles(styles)(SideNav);
+export default withStyles(styles)(RightSideNav);
