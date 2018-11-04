@@ -13,7 +13,8 @@
     "react": "^16.7.0-alpha.0",
     "react-dom": "^16.7.0-alpha.0",
     "react-mapbox-gl": "^4.0.0",
-    "react-scripts": "2.0.3"
+    "react-scripts": "2.0.3",
+    "recompose": "^0.30.0"
   },
   "scripts": {
     "start": "react-scripts start",
