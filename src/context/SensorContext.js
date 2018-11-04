@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const SensorContext = React.createContext();
+export const { Provider, Consumer } = React.createContext();

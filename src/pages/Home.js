@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import LagoonMap from '../components/LagoonMap';
 import { LeftSideBar } from '../components/LeftSideBar';
-import { fetchSaintJohnSensors } from '../services/saintJohn-service';
+import { SensorProvider } from '../context/SensorProvider';
 
 const styles = theme => ({
   root: {
@@ -44,11 +44,13 @@ const Home = props => {
 
   return (
     <div className={classes.root}>
-      <LeftSideBar classes={classes} />
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <LagoonMap />
-      </main>
+      <SensorProvider>
+        <LeftSideBar classes={classes} />
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          <LagoonMap />
+        </main>
+      </SensorProvider>
     </div>
   );
 }
