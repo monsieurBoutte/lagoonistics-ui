@@ -39,6 +39,8 @@ export default class LagoonMap extends React.Component {
           "interpolate",
           ["linear"],
           ["get", "delta"],
+          -0.1,
+          0.5,
           0,
           0, // if delta is zero show zero weight
           5,
@@ -77,7 +79,7 @@ export default class LagoonMap extends React.Component {
   componentDidMount() {
     this.fetchSensorData().then(data => {
       const features = data.map(this.sensorToFeature);
-
+      console.log({ data, features });
       this.setState({
         lagoonGeoJson: {
           type: "geojson",
@@ -92,10 +94,11 @@ export default class LagoonMap extends React.Component {
 
   sensorToFeature(sensor) {
     // TODO: get delta from sensor readings
+    const [reading] = sensor.data.filter(d => d.label === SENSOR_READING);
     return {
       type: "Feature",
       properties: {
-        delta: 5,
+        delta: reading.delta,
         sensorId: sensor.sensorId
       },
       geometry: {
@@ -106,8 +109,7 @@ export default class LagoonMap extends React.Component {
   }
 
   fetchSensorData() {
-    return Promise.resolve([]);
-    // return axios.get("http://50ef6569.ngrok.io/lobo").then(({ data }) => data);
+    return axios.get("http://50ef6569.ngrok.io/lobo").then(({ data }) => data);
   }
 
   handleClick(map, event) {
