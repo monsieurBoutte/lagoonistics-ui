@@ -14,9 +14,10 @@ const styles = theme => ({
     flexShrink: 0,
     position: 'fixed',
     top: 90,
-    bottom: 20,
     left: 20,
-    zIndex: 1201
+    zIndex: 1201,
+    minHeight: 400,
+    display: 'flex'
   },
   secondaryColor: {
     color: theme.palette.secondary.main,
@@ -24,7 +25,8 @@ const styles = theme => ({
   drawerPaper: {
     width: drawerWidth,
     position: 'relative',
-    borderRadius: 6
+    borderRadius: 6,
+    height: 'auto'
   },
   content: {
     flexGrow: 1,
