@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
+import SettingsIcon from '@material-ui/icons/Settings';
 import SearchIcon from '@material-ui/icons/Search';
 import SideNav, { useToggleDrawer } from '../components/SideNav'
 
@@ -19,8 +19,8 @@ const styles = theme => ({
     flexGrow: 1,
   },
   menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+    marginLeft: 4,
+    marginRight: - 18,
   },
   title: {
     display: 'none',
@@ -79,9 +79,6 @@ const NavBar = props => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-            <MenuIcon onClick={() => setIsOpen(!isOpen)} />
-          </IconButton>
           <Typography className={classes.title} variant="h6" color="inherit" noWrap>
             Lagoonistics
           </Typography>
@@ -98,6 +95,9 @@ const NavBar = props => {
               }}
             />
           </div>
+          <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+            <SettingsIcon onClick={() => setIsOpen(!isOpen)} />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <SideNav isOpen={isOpen} setIsOpen={setIsOpen} />

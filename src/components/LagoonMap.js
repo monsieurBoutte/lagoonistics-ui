@@ -85,7 +85,6 @@ export default class LagoonMap extends React.Component {
   render() {
     return (
       <div>
-        Lagoon Map
         <Map
           style={style.dark}
           center={[-81.012788, 28.680166]}
