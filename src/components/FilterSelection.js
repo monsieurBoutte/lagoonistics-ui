@@ -13,9 +13,9 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   formControl: {
-    padding: `${theme.spacing.unit}px 0`,
-    minWidth: `calc(100% - ${theme.spacing.unit * 2}px)`,
-    margin: `0 ${theme.spacing.unit}px`
+    paddingBottom: `${(theme.spacing.unit + 4)}px`,
+    minWidth: `calc(100% - ${(theme.spacing.unit + 4) * 2}px)`,
+    margin: `${theme.spacing.unit + 4}px ${(theme.spacing.unit + 4)}px 0`
   },
   chips: {
     display: 'flex',

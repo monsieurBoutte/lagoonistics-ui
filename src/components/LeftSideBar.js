@@ -18,7 +18,6 @@ export const LeftSideBar = props => {
           paper: classes.drawerPaper,
         }}
       >
-        <div className={classes.toolbar} />
         <FilterSelection />
         <Divider />
         <List>
